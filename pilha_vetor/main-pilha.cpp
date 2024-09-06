@@ -3,43 +3,43 @@
 
 using namespace std;
 
-int PARAR_PROGRAMA = 0;
-    int INSERIR = 1;
-    int REMOVER = 2;
-    int IMPRIMIR = 3;
+int STOP_PROGRAM = 0;
+    int ENQUEUE = 1;
+    int DEQUEUE = 2;
+    int PRINT = 3;
 
 void menu() {
-    cout << "Digite [" << PARAR_PROGRAMA << "] para parar o programa\n";
-    cout << "Digite [" << INSERIR << "] para inserir um elemento\n";
-    cout << "Digite [" << REMOVER << "] para remover um elemento\n";
-    cout << "Digite [" << IMPRIMIR << "] para imprimir a pilha\n";
+    cout << "Digite [" << STOP_PROGRAM << "] para parar o programa\n";
+    cout << "Digite [" << ENQUEUE << "] para inserir um elemento\n";
+    cout << "Digite [" << DEQUEUE << "] para remover um elemento\n";
+    cout << "Digite [" << PRINT << "] para imprimir a pilha\n";
 }
 
 int main() {
-    Pilha pilha1;
-    TipoItem item;
-    int opcao;
+    Stack myStack;
+    ItemType item;
+    int option;
 
     cout << "Programa gerador de pilha:\n";
 
     do {
        menu();
-        cin >> opcao;
+        cin >> option;
 
-        if(opcao == INSERIR) {
+        if(option == ENQUEUE) {
             cout << "Digite o elemento a ser inserido: ";
             cin >> item;
-            pilha1.inserir(item);
-        } else if(opcao == REMOVER) {
-            item = pilha1.remover();
+            myStack.push(item);
+        } else if(option == DEQUEUE) {
+            item = myStack.pop();
             if(item != -1) { 
                 cout << "Elemento " << item << " removido com sucesso" << endl;
             }
-        } else if(opcao == IMPRIMIR) {
-            pilha1.imprimir();
+        } else if(option == PRINT) {
+            myStack.print();
         }
 
-    } while (opcao != PARAR_PROGRAMA);
+    } while (option != STOP_PROGRAM);
     cout << "Programa pilha finalizado";
 
     return 0;

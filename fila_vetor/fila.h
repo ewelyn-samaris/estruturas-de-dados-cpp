@@ -1,17 +1,17 @@
-typedef int TipoItem;
-const int MAX_ITENS = 100;
+typedef int ItemType;
+const int MAX_ITEMS = 100;
 
-class Fila {
+class Queue {
     private:
-    int primeiro, ultimo;
-    TipoItem* estrutura;
+    int first, last;
+    ItemType* structure;
 
     public:
-    Fila(); 
-    ~Fila(); 
-    bool estavazio();
-    bool estacheio();
-    void inserir(TipoItem item);
-    TipoItem remover();
-    void imprimir();
+    Queue(); 
+    ~Queue(); 
+    bool isEmpty();
+    bool isFull();
+    void enqueue(ItemType item);
+    ItemType dequeue();
+    void print();
 };

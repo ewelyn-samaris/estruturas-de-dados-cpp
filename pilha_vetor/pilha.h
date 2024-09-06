@@ -1,20 +1,20 @@
 
-typedef int TipoItem;
+typedef int ItemType;
 
-const int MAX_ITENS = 100;
+const int MAX_ITEMS = 100;
 
-class Pilha {
+class Stack {
     private: 
-    int tamanho;
-    TipoItem* estrutura;
+    int size;
+    ItemType* structure;
 
     public:
-    Pilha();
-    ~Pilha();
-    bool estacheia();
-    bool estavazia(); 
-    void inserir(TipoItem item);
-    TipoItem remover();
-    void imprimir(); 
-    int qualtamanho();
+    Stack();
+    ~Stack();
+    bool isEmpty(); 
+    bool isFull();
+    void push(ItemType item);
+    ItemType pop();
+    void print(); 
+    int getSize();
 };

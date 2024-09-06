@@ -3,55 +3,55 @@
 
 using namespace std;
 
-Fila::Fila()
+Queue::Queue()
 {
-    primeiro = 0;
-    ultimo = 0;
-    estrutura = new TipoItem(MAX_ITENS);
+    first = 0;
+    last = 0;
+    structure = new ItemType(MAX_ITEMS);
 }
 
-Fila::~Fila()
+Queue::~Queue()
 {
-    delete [] estrutura;
+    delete [] structure;
 }
 
-bool Fila::estavazio()
+bool Queue::isEmpty()
 {
-    return primeiro == ultimo;
+    return first == last;
 }
 
-bool Fila::estacheio()
+bool Queue::isFull()
 {
-    return (ultimo - primeiro) == MAX_ITENS;
+    return (last - first) == MAX_ITEMS;
 }
 
-void Fila::inserir(TipoItem item)
+void Queue::enqueue(ItemType item)
 {
-    if(estacheio()) {
+    if(isFull()) {
         cout << "Fila esta cheia. Não eh possivel inserir elementos\n";
     } else{
-        estrutura[ultimo % MAX_ITENS] = item;
-        ultimo++;
+        structure[last % MAX_ITEMS] = item;
+        last++;
         cout << "Elemento " << item << " inserido na fila com sucesso\n";
     }
 }
 
-TipoItem Fila::remover()
+ItemType Queue::dequeue()
 {
-    if(estavazio()) {
+    if(isEmpty()) {
         cout << "Fila esta vazia. Nao ha elementos a serem removidos\n";
         return -1;
     } else{
-        primeiro++;
-        return estrutura[(primeiro-1) % MAX_ITENS];
+        first++;
+        return structure[(first-1) % MAX_ITEMS];
     }
 }
 
-void Fila::imprimir()
+void Queue::print()
 {
     cout << "Fila: [ ";
-    for(int i = primeiro; i < ultimo; ++i ){
-        cout << estrutura[i % MAX_ITENS] << " ";
+    for(int i = first; i < last; ++i ){
+        cout << structure[i % MAX_ITEMS] << " ";
     }
     cout << "]\n";
 }

@@ -3,41 +3,41 @@
 
 using namespace std;
 
-int PARAR_PROGRAMA = 0;
-int INSERIR = 1;
-int REMOVER = 2;
-int IMPRIMIR = 3;
+int STOP_PROGRAM = 0;
+int ENQUEUE = 1;
+int DEQUEUE = 2;
+int PRINT = 3;
 
 void menu() {
-    cout << "Digite [ " << PARAR_PROGRAMA << " ] para parar o prgrama\n";
-    cout << "Digite [ " << INSERIR << " ] para inserir um novo elemento na fila\n";
-    cout << "Digite [ " << REMOVER << " ] para remover um elemento da fila\n";
-    cout << "Digite [ " << IMPRIMIR << " ] para imprimir a fila\n";
+    cout << "Digite [ " << STOP_PROGRAM << " ] para parar o prgrama\n";
+    cout << "Digite [ " << ENQUEUE << " ] para inserir um novo elemento na fila\n";
+    cout << "Digite [ " << DEQUEUE << " ] para remover um elemento da fila\n";
+    cout << "Digite [ " << PRINT << " ] para imprimir a fila\n";
 }
 
 int main (){
-Fila fila1;
-int opcao;
-TipoItem item;
+Queue myQueue;
+int option;
+ItemType item;
 cout << "\nPrograma gerador de fila:\n";
 
 
 do {
     menu();
-    cin >> opcao;
+    cin >> option;
 
-    if(opcao == INSERIR) {
+    if(option == ENQUEUE) {
         cout << "Digite o elmento a ser inserido na fila: ";
         cin >> item;
-        fila1.inserir(item);
-    } else if(opcao == REMOVER){
-        item = fila1.remover();
+        myQueue.enqueue(item);
+    } else if(option == DEQUEUE){
+        item = myQueue.dequeue();
         cout << "o elemento " << item << " foi removido\n";
-    } else if(opcao == IMPRIMIR) {
-        fila1.imprimir();
+    } else if(option == PRINT) {
+        myQueue.print();
     }
 
-} while(opcao != PARAR_PROGRAMA);
+} while(option != STOP_PROGRAM);
 cout << "Programa finalizado\n";
 
 return 0;

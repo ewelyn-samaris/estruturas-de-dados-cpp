@@ -3,58 +3,58 @@
 
 using namespace std;
 
-    Pilha::Pilha() 
+    Stack::Stack() 
     {
-        tamanho = 0;
-        estrutura = new TipoItem[MAX_ITENS];
+        size = 0;
+        structure = new ItemType[MAX_ITEMS];
     }
 
-    Pilha::~Pilha()
+    Stack::~Stack()
     {
-        delete [] estrutura;
+        delete [] structure;
     }
 
-    bool Pilha::estacheia()
+    bool Stack::isFull()
     {
-        return tamanho == MAX_ITENS;
+        return size == MAX_ITEMS;
     }
 
-    bool Pilha::estavazia()
+    bool Stack::isEmpty()
     {
-        return tamanho == 0;
+        return size == 0;
     }
 
-    void Pilha::inserir(TipoItem item)
+    void Stack::push(ItemType item)
     {
-        if(estacheia()) {
+        if(isFull()) {
             cout << "A pilha esta cheia. Nao eh possivel inserir o elemento\n";
         } else{
-            estrutura[tamanho] = item;
-            ++tamanho;
+            structure[size] = item;
+            ++size;
         }
     }
 
-    TipoItem Pilha::remover()
+    ItemType Stack::pop()
     {
-        if(estavazia()){
+        if(isEmpty()){
             cout << "A pilha esta vazia. Nao existe elementos a serem removidos\n";
             return -1;
         } else {
-            tamanho--;
-            return estrutura[tamanho];
+            size--;
+            return structure[size];
         }
     }
 
-    void Pilha::imprimir()
+    void Stack::print()
     {
         cout << "Pilha: [ ";
-        for(int i = 0; i < tamanho; i++) {
-            cout << estrutura[i] << " ";
+        for(int i = 0; i < size; i++) {
+            cout << structure[i] << " ";
         }
         cout << "]\n";
     }
 
-    int Pilha::qualtamanho()
+    int Stack::getSize()
     {
-        return tamanho;
+        return size;
     }
