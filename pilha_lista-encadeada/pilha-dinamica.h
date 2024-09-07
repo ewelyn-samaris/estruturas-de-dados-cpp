@@ -4,7 +4,7 @@ typedef int ItemType;
 
 class DynamicStack {
     private:
-    Node* TopNode;
+    Node* Rear;
 
     public:
     DynamicStack();
