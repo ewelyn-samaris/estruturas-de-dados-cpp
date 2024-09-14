@@ -1,0 +1,47 @@
+
+TRATAMENTO DE COLISÕES 
+
+Existem diversas formas de tratar colisões em uma tabela hash, veremos:
+
+* Encadeamento Exterior ou separado => Listas encadeadas;
+* Encadeamento Interior ou aberto 
+    =>  Heterogêneo
+    => Homogêneo (Teste linear).
+
+
+>> ENCADEAMENTO EXTERIOR 
+No encadeamento exterior, cada posição do vetor armazena um ponteiro que aponta para a lista encadeada que contém 
+os valores de colisões para aquela posição.
+A posição do vetor estará vazia quando ainda nenhum elemento foi mapeado pela função hash para aquela posição.
+
+
+>> ENCADEAMENTO INTERIOR HETEROGÊNEO
+No encadeamento interior Heterogêneo, o vetor da tabela tem posições "a mais", ou seja,
+além das posições trabalhadas para as chaves, teremos as posições destinadas às colisões.
+Assim, toda vez que houver colisões a armazenaremos no final do vetor, na "seção" destinada aoarmazenamento das colisões.
+Isso caracteriza o termo "Heterogêneo", já que as posições das chaves e as posições das colisões são "imiscíveis".
+
+Perceba que essa tratativa tem um problema: todas as colisões de todas as posições destinadas às chaves do vetor 
+são colocadas juntas (e misturadas) nos espaços destinados às colisões, diferente do encadeamento exterior,
+onde a lista encadeada só contém as colisões vinculadas àquela posição.
+A busca assim pode ser muito prejudicada a depender da quantidade de colisões.
+
+Nesse tipo de tratativa é necessário diferenciar espaços vazios (onde nunca houve inserção de elementos)
+e espaços "disponíveis" (espaços que já foram ocupados por elementos, porém estes foram removidos).
+Isto é necessário para que ao ter que percorrer a "seção" de colisões em busca de um elemento, nossa função,
+ao encontrar um espaço vazio devido ao elemento ter sido removido, não pare de percorrer as demais posições,
+entendendo que a partir daquela posição em diante nunca houve inserção.
+A busca só deve parar quando encontrar o elemento ou quando encontrar um espaço vazio (nunca ocupado) dentro da "seção"
+de espaços destinados às colisões.
+
+
+>> ENCADEAMENTO INTERIOR HOMOGÊNEO (Teste linear)
+No encadeamento anterior Homogêneo por teste linear, ao acontecer uma colisão, o elemento (chave) é colocado também dentro do vetor
+(por isso homogêneo), mas na primeira posição livre (vazia ou disponível) após a posição de colisão.
+Diferentemente do encadeamento interior heterogêneo, não espaços destinados às colisões e às chaves.
+Nessa tratativa podemos ter colisões secundárias, que são colisões com elementos (chaves) que ocupam posições que deveriam estar vazias,
+mas são ocupadas por serem resultados de colisões anteriores.
+Perceba que esse método demanda um fator de carga menor para que tenhamos mais espaços vazios para inserção dascolisões.
+Nesse caso também temos que diferenciar espaço vazio (nunca antes ocupado) de espaço disponível (anteriormente ocupado, mas houve remoção),
+pois a busca irá acontecer a partir da posição indicada pela função hash (e suas posteriores, onde podem estar outras chaves e colisões)
+até encontrar o elemento ou até encontrar um espaço vazio.

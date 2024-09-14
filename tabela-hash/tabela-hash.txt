@@ -1,0 +1,53 @@
+
+TABELA DE DISPERSÃO | TABELA DE ESPALHAMENTO | TABELA HASH
+
+Tbm chamada de dicionário ou mapa, é uma estrutura de dados que associa chaves de pesquisa a valores, através de uma função 
+(função hash | função de espalhamento | função de mapeamento).
+Essa chave (de qualquer tipo: int, string, bool, uma classe, etc.) é transformada em um valor inteiro (de 0 a n-1, sendo n o tamanho do vetor) que será o índice do vetor onde encontramos (nesta posição) o valor procurado.
+A tabela hash pode ser vista como um vetor de pares chave-valor (ou uma estrutura similar que mantém esses pares) e a função hash responsável 
+por orquestrar a inserção e consulta de dados ao vetor.
+Cada posição do vetor pode armazenar um par chave-valor ou uma estrutura mais complexa (no caso de colisões), como uma lista encadeada ou uma árvore.
+
+
+OBJETIVO
+Buscas mais eficientes.
+Seu objetivo é a partir de uma chave simples, fazer uma busca rápida e obter o valor desejado.
+
+
+FUNÇÃO HASH
+1. Produzir um número baixo de colisões
+2. Ser facilmente computável (transformar a chave em valor ñ deve exigir mto processamento)
+3. Ser uniforme (o tempo de execução da função deve ser constante, independentemente da chave)
+
+
+FATOR DE CARGA
+Fc = Número máximo de elementos / tamanho do vetor
+O tamanho do vetor deve ser MAIOR que o número máximo de elementos.
+Quanto mais próximo de 1 o Fc, menos posições vazias teremos no vetor (mais próximo o número máximo de elmentos ejkstá do tamanho do vetor).
+Quanto mais próximo de 0 o Fc, mais posições vazias teremos após o preenchimento da tabela (mais desperdício de memória)
+
+
+COLISÕES
+Dizemos que temos uma colisão em uma tabela hash quando, para duas ou mais chaves distintas, a função hash (de espalhamento)
+produz o mesmo valor inteiro (índice do vetor).
+
+
+OUTRAS FUNÇÕES
+Quando trabalhamos com Hash tables, pensando também no tratamento de suas colisões, além da função hash (de espalhamento),
+trabalhamos também com funções de inserção, busca e remoção.
+A implementação dessas funções dependerá do método escolhido para tratamento das colisões.
+
+
+EXEMPLO DE UMA BOA FUNÇÃO HASH
+Sendo a chave uma string (por exemplo), temos:
+Chave = (C0, C1, ..., Ck-1), onde C é cada caracter e k a quantidade de caracteres, indo assim de 0 a k-1.
+
+A função hash seria:
+
+(C0.a^(k-1) + C1.a^(k-2) + ... + Ck-2.a^1 + Ck-1.a^0) % tamanho_vetor
+É interessante que tanto o fator a quanto o tamanho do vetor sejam números primos, reduzindo possibilidade de colisões.
+
+Perceba que uma função hash que é definida módulo (resto) da soma dos valores de suas letras (ASCII correspondente a cada uma, por ex.) 
+pelo tamanho do vetor geraria colisões entre palíndromos.
+O método sugerido acima ((C0.a^(k-1) + C1.a^(k-2) + ... + Ck-2.a^1 + Ck-1.a^0) % tamanho_vetor) acaba por atribuir "pesos" às posições
+que cada letra ocupa, resultando em valores diferentes para a soma, mesmo para palíndromos.
