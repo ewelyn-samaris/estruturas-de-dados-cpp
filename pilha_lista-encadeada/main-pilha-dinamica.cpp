@@ -4,9 +4,9 @@
 using namespace std;
 
 int STOP_PROGRAM = 0;
-    int ENQUEUE = 1;
-    int DEQUEUE = 2;
-    int PRINT = 3;
+int ENQUEUE = 1;
+int DEQUEUE = 2;
+int PRINT = 3;
 
 void menu() {
     cout << "Digite [" << STOP_PROGRAM << "] para parar o programa\n";
