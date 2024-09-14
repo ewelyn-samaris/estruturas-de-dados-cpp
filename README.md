@@ -7,7 +7,7 @@ Conteúdo:
 - Fila com vetores;
 - Pilha com lista encadeada;
 - Fila com lista encadeada;
-- Tabela Hash (`a implementar`);
+- Tabela Hash;
 - Árvore Binária (`a implementar`);
 - Árvore AVL (`a implementar`);
 - Grafo com Matriz de Adjacências (`a implementar`);
